@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/buscauser.css">
+    <title>Gerenciamento de Usuários</title>
+</head>
+<body>
+
+    <div class="card">
+    <h3>Buscar Usuário</h3>
+    <label for="getUserId">ID do Usuário:</label>
+    <input type="number" id="getUserId">
+    <button onclick="getUser()">Buscar</button>
+
+    <h3>Gerenciar Usuário</h3>
+    <label for="inpuNome">Nome:</label>
+    <input type="text" id="inpuNome">
+    <label for="email">Email:</label>
+    <input type="text" id="inputEmail">
+
+    <h3>Endereço</h3>
+    <input name="cep" type="text" id="cep" value="" size="10" maxlength="9" /></label><br />
+    <label>Rua:
+    <input name="rua" type="text" id="rua" size="60" /></label><br />
+    <label>Bairro:
+    <input name="bairro" type="text" id="bairro" size="40" /></label><br />
+    <label>Cidade:
+    <input name="cidade" type="text" id="cidade" size="40" /></label><br />
+    <label>Estado:
+    <input name="uf" type="text" id="uf" size="2" /></label><br />
+    <label>IBGE:
+    <input name="ibge" type="text" id="ibge" size="8" /></label><br />
+    <button onclick="updateUser()">Atualizar</button>
+    <button onclick="deleteUser()">Excluir</button>
+    <a href="../" class="button">Voltar</a>
+</div>
+
+<script src="js/getUser.js"></script>
+<script src="js/updateUser.js"></script>
+<script src="js/deleteUser.js"></script>
+<script src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.31/dist/sweetalert2.all.min.js
+"></script>
+<link href="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.31/dist/sweetalert2.min.css
+" rel="stylesheet">
+</body>
+</html>
