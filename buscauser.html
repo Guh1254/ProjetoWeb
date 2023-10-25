@@ -32,6 +32,8 @@
     <input name="uf" type="text" id="uf" size="2" /></label><br />
     <label>IBGE:
     <input name="ibge" type="text" id="ibge" size="8" /></label><br />
+    </details>
+    <div id="mapid"></div>
     <button onclick="updateUser()">Atualizar</button>
     <button onclick="deleteUser()">Excluir</button>
     <a href="../" class="button">Voltar</a>
@@ -40,11 +42,15 @@
 <script src="js/getUser.js"></script>
 <script src="js/updateUser.js"></script>
 <script src="js/deleteUser.js"></script>
+<script src="js/cep.js"></script>
 <script src="
 https://cdn.jsdelivr.net/npm/sweetalert2@11.7.31/dist/sweetalert2.all.min.js
 "></script>
 <link href="
 https://cdn.jsdelivr.net/npm/sweetalert2@11.7.31/dist/sweetalert2.min.css
 " rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>
 </html>

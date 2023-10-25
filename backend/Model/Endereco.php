@@ -9,7 +9,7 @@ private string $rua;
 private string $bairro;
 private string $cidade;
 private string $uf;
-private int $userid;
+private int $iduser;
 public $conn;
 public function __construct() {
     $this->conn = new Model();
@@ -110,15 +110,15 @@ return $this;
  */
 public function getIduser()
 {
-return $this->userid;
+return $this->iduser;
 }
 
 /**
  * Set the value of iduser
  */
-public function setIduser($userid): self
+public function setIduser($iduser): self
 {
-$this->userid = $userid;
+$this->iduser = $iduser;
 
 return $this;
 }

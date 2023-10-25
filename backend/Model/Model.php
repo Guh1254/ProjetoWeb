@@ -281,5 +281,28 @@ public function CallInsert($table, $data) {
     
         $this->conn->exec($sql);
     }
+
+    public function criarTabelaVendas(){
+        $sql = "
+        CREATE TABLE IF NOT EXISTS vendas (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id_usuario INTEGER,
+            id_produto INTEGER,
+            data_cadastro DATE,
+            FOREIGN KEY (id_usuario) REFERENCES users(id),
+            FOREIGN KEY (id_produto) REFERENCES produtos(id)
+        )";
+        $this->conn->exec($sql);
+    }
+    
+    public function criarViewProdutosPorUsuario(){
+        $sql = "
+        CREATE VIEW IF NOT EXISTS produtos_por_usuario AS
+        SELECT u.id, u.nome, COUNT(v.id_produto) as quantidade_produtos
+        FROM users u
+        LEFT JOIN vendas v ON u.id = v.id_usuario
+        GROUP BY u.id";
+        $this->conn->exec($sql);
+    }
     
 }
