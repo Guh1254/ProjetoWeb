@@ -6,6 +6,10 @@ use App\Endereco\Endereco;
 use App\Controller\EnderecoController;
 use App\Model\Model;
 use App\Model\Usuario;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+use Exception;
+
 class UserController {
 
     private $db;
@@ -42,8 +46,7 @@ class UserController {
             'email'=> $this->usuario->getEmail(),
             'senha'=> $this->usuario->getSenha(),
             'datanascimento'=> $this->usuario->getDataNascimento(),
-
-                                                    ])){
+            ])){
            
            $this->endereco->setCep($data['cep']);
            $this->endereco->setRua($data['rua']);
@@ -78,5 +81,40 @@ class UserController {
     
         return $user;
     }
-    
+
+    public function validarToken($token){
+        
+        $key = "1254";
+        $algoritimo = 'HS256';
+        try {
+            $decoded = JWT::decode($token, new Key($key, $algoritimo));
+            return ['status' => true, 'message' => 'Token válido!', 'data' => $decoded];
+        } catch(Exception $e) {
+            return ['status' => false, 'message' => 'Token inválido! Motivo: ' . $e->getMessage()];
+        }
+    }
+    public function login($senha,$email) {
+        $resultado = $this->db->select('users', ['email' => $email]);
+        $checado = 3;
+        if (!$resultado) {
+            return ['status' => false, 'message' => 'Usuário não encontrado.'];
+        }
+        if (!password_verify($senha,$resultado[0]['senha'])) {
+            return ['status' => false, 'message' => 'Senha incorreta.'];
+        }
+        $key = "1254";
+        $algoritimo='HS256';
+            $payload = [
+                "iss" => "localhost",
+                "aud" => "localhost",
+                "iat" => time(),
+                "exp" => time() + (60 * $checado),  
+                "sub" => $email
+            ];
+            
+            $jwt = JWT::encode($payload, $key,$algoritimo);
+           
+        return ['status' => true, 'message' => 'Login bem-sucedido!','token'=>$jwt];
+    }
 }
+
