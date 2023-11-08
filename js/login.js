@@ -15,7 +15,8 @@ mostrarSenhaBtn.addEventListener('click', () => {
     senhaVisivel = !senhaVisivel;
 });
 
-document.getElementById('loginForm').addEventListener('click', createUser);
+document.getElementById('login').addEventListener('click', createLogin);
+function createLogin() {
 
     var emailUsuario = emailInput.value;
     var senhaUsuario = document.getElementById('senha').value;
@@ -63,6 +64,9 @@ document.getElementById('loginForm').addEventListener('click', createUser);
                 'error'
               )
         } else {
+            console.log(data);
+            sessionStorage.setItem('token', data.token);
+            window.location.href = "index.html";
             Swal.fire(
                 'Perfeito!',
                 'Logado com sucesso!',
@@ -73,3 +77,4 @@ document.getElementById('loginForm').addEventListener('click', createUser);
     })
     .catch(error => alert('Erro na requisição: ' + error));
 
+}
