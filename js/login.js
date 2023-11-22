@@ -66,7 +66,7 @@ function createLogin() {
         } else {
             console.log(data);
             sessionStorage.setItem('token', data.token);
-            window.location.href = "index.html";
+            window.location.href = "index2.html";
             Swal.fire(
                 'Perfeito!',
                 'Logado com sucesso!',

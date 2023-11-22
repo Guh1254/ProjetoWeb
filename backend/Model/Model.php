@@ -12,7 +12,7 @@ use ReflectionProperty;
  private $username = "root";
  private $password = "root123";
  private $conn;
- private $db_type = "sqlite"; // Opções: "mysql", "pgsql", "sqlite", "mssql"
+ private $db_type = "mysql"; // Opções: "mysql", "pgsql", "sqlite", "mssql"
 
  public function __construct() {
      $this->connect();
@@ -304,5 +304,6 @@ public function CallInsert($table, $data) {
         GROUP BY u.id";
         $this->conn->exec($sql);
     }
+    
     
 }
