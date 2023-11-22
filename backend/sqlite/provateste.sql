@@ -208,7 +208,11 @@ DELIMITER ;
 -- (Veja abaixo para a visão atual)
 --
 CREATE TABLE `produtos_por_usuario` (
+`id` int(11),
+`nome` text,
+`quantidade_produtos` bigint(21)
 );
+
 
 -- --------------------------------------------------------
 
