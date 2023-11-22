@@ -1,42 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt_BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Usuário e Produto</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/criauser.css">
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.31/dist/sweetalert2.min.css" rel="stylesheet">
+  <title>Registro</title>
 </head>
 <body>
-    <div class="card">
-        <h1>Escolha a Opção</h1>
-        <div class="section">
-            <h2>Cadastro de Usuário</h2>
-            <a href="criaruser.html" class="button">Cadastrar Usuário</a>
-            <a href="todosuser.html" class="button">Listar todos os Usuários</a>
-            <a href="buscauser.html" class="button">Buscar Usuário</a>
-            <a href="login.html" class="button">Logar</a>
-        </div>
-        <div class="section">
-            <h2>Cadastro de Produto</h2>
-            <a href="criarprod.html" class="button">Cadastrar Produto</a>
-            <a href="todosprod.html" class="button">Listar todos os Produtos</a>
-            <a href="buscaprod.html" class="button">Buscar Produtos</a>
-            <a href="vincular.html" class="button">Vincular Produtos e Usuários</a>
-            <a href="grafico.html" class="button">Gráfico</a>
-        </div>
+  <div class="card">
+    <h1>Registro de Usuário</h1>
+    <form id="userForm">
+        <label for="Email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="Senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required>
+        <button type="button" id="mostrarSenha">Mostrar Senha</button>        
+        <button type="button" id="login">Logar</button>
+        <a href="todosuser.html" class="button">Experiência sem Login??</a>
+        <BR></BR>
+        <a href="criaruser.html" class="button">Deseja cadastrar??</a>
+    </form>
     </div>
-    <script>
-        window.onload = function() {
-            fetch('/backend/token')
-                .then(response => response.json())
-                .then(data => localStorage.setItem('token', data.token));
-        }
-    </script>
-    <script src="
-    https://cdn.jsdelivr.net/npm/sweetalert2@11.7.31/dist/sweetalert2.all.min.js
-    "></script>
-    <link href="
-    https://cdn.jsdelivr.net/npm/sweetalert2@11.7.31/dist/sweetalert2.min.css
-    " rel="stylesheet">
+    <script src="js/login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.31/dist/sweetalert2.all.min.js"></script>
 </body>
 </html>
